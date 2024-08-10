@@ -1,0 +1,10 @@
+.app-conatiner{
+    display: flex;
+}
+.contain{
+    width: 100%;
+}
+
+.sidebar{
+    min-height: 700px;
+}
