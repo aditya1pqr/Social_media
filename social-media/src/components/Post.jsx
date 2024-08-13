@@ -1,17 +1,33 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import {AiFillDelete } from "react-icons/ai";
+import { PostList } from '../store/PostListstrore';
 
-function Post() {
+function Post({post}) {
+   const {deletepost} = useContext(PostList)
   return (
-    <div>
-      <div class="card" style={{width: "18rem"}}    >
-
-          <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-         </div>
-     </div>
+    <div className="card post-card" style={{ width: "30rem" }}>
+    <div className="card-body">
+      <h5 className="card-title">
+        {post.title}
+        <span
+          className=" btn position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+          onClick={() => deletepost(post.id)}
+        >
+          <AiFillDelete />
+        </span>
+      </h5>
+      <p className="card-text">{post.body}</p>
+      {post.tags.map((tag) => (
+        <span key={tag} className="badge text-bg-primary hashtag">
+          {tag}
+        </span>
+      
+      ))}
+      <div className="alert alert-success reactions" role="alert">
+        This post has been reacted by {post.reactions} people.
+      </div>
     </div>
+  </div>
   )
 }
 
