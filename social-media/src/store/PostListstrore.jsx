@@ -8,7 +8,12 @@ import {  createContext, useReducer } from "react";
 })
 
 const postListReducer = (currpost, action) =>{
-     let newItems = currpost
+     let newItems = currpost;
+
+     if(action.type === "Add_post")
+     {
+        newItems = [action.payload, ...currpost]
+     }
     if(action.type === "Delete_Post")
     {
         newItems= currpost.filter((post) => post.id !== action.payload.PostId);
@@ -18,7 +23,19 @@ const postListReducer = (currpost, action) =>{
 
 const PostListProvider = ({children}) => {
     const [postlist, dispacher] = useReducer(postListReducer, DEFAULT_POST_LIST);
-     const addpost =()=>{
+     const addpost =(userId, postTitle, postBody, reactions, tags)=>{
+       
+        dispacher({ type: "Add_post",
+            payload: {
+              id: Date.now(),
+              title: postTitle,
+              body: postBody,
+              reactions: reactions,
+              userId: userId,
+              tags: tags,
+            }
+           
+           })
 
      }
 

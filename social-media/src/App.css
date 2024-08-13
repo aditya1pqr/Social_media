@@ -8,3 +8,18 @@
 .sidebar{
     min-height: 700px;
 }
+.create-post {
+    width: 80%;
+    margin-top: 50px;
+    margin-left: 10%;
+  }
+
+.card-conatiner2{
+    width: 80%;
+    margin: 20px;
+    display:  flex;
+    flex-wrap: wrap;
+}
+.post-card{
+    margin: 10px 0px 0px 20px;
+}

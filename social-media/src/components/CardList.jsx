@@ -6,7 +6,7 @@ function CardList() {
 
    const { postlist} = useContext(PostList)
   return (
-    <div>
+    <div className='card-conatiner2'>
     {postlist.map((post) => (<Post  post={post} key={post.id}  />))}  
       
     </div>
